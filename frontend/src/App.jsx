@@ -1,23 +1,23 @@
 import { useState, useEffect, useCallback } from 'react'
 import axios from 'axios'
 
-const CATEGORIES = ['All', 'Electronics', 'Clothing', 'Home & Garden', 'Food & Beverages']
+const CATEGORIES = ['All', 'Vehicles', 'Charging Equipment', 'Accessories', 'Parts & Service']
 
 const CATEGORY_COLORS = {
-  'Electronics': 'bg-blue-100 text-blue-700',
-  'Clothing': 'bg-purple-100 text-purple-700',
-  'Home & Garden': 'bg-green-100 text-green-700',
-  'Food & Beverages': 'bg-orange-100 text-orange-700',
+  'Vehicles': 'bg-blue-100 text-blue-700',
+  'Charging Equipment': 'bg-green-100 text-green-700',
+  'Accessories': 'bg-purple-100 text-purple-700',
+  'Parts & Service': 'bg-orange-100 text-orange-700',
 }
 
 const CATEGORY_ICONS = {
-  'Electronics': '🔌',
-  'Clothing': '👕',
-  'Home & Garden': '🏡',
-  'Food & Beverages': '🛒',
+  'Vehicles': '🚗',
+  'Charging Equipment': '⚡',
+  'Accessories': '🛠️',
+  'Parts & Service': '🔧',
 }
 
-const EMPTY_FORM = { name: '', sku: '', category: 'Electronics', price: '', quantity: '', description: '' }
+const EMPTY_FORM = { name: '', sku: '', category: 'Vehicles', price: '', quantity: '', description: '' }
 
 function StatsCard({ label, value, icon, color }) {
   return (
@@ -282,10 +282,10 @@ export default function App() {
       <header className="bg-white border-b border-gray-100 sticky top-0 z-40 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-bold text-lg">📦</div>
+            <div className="w-9 h-9 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-bold text-lg">⚡</div>
             <div>
-              <h1 className="text-xl font-extrabold text-gray-900 leading-tight">Inventory Manager</h1>
-              <p className="text-xs text-gray-400 leading-none">Track, manage, and optimize your stock</p>
+              <h1 className="text-xl font-extrabold text-gray-900 leading-tight">EV Inventory Manager</h1>
+              <p className="text-xs text-gray-400 leading-none">Electric vehicles, charging & accessories</p>
             </div>
           </div>
           <button
@@ -345,7 +345,7 @@ export default function App() {
         {/* Product Grid */}
         {loading ? (
           <div className="text-center py-24 text-gray-400">
-            <div className="text-5xl mb-4 animate-bounce">📦</div>
+            <div className="text-5xl mb-4 animate-bounce">⚡</div>
             <p className="text-lg font-medium">Loading inventory…</p>
           </div>
         ) : filtered.length === 0 ? (
