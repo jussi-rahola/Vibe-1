@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const db = require('./database');
 
 const app = express();
@@ -94,6 +95,15 @@ app.delete('/api/products/:id', (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+
+// Serve frontend static build in production
+if (process.env.NODE_ENV === 'production') {
+  const frontendDist = path.join(__dirname, '..', 'frontend', 'dist');
+  app.use(express.static(frontendDist));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(frontendDist, 'index.html'));
+  });
+}
 
 app.listen(PORT, () => {
   console.log(`Inventory backend running on http://localhost:${PORT}`);
