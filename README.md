@@ -15,21 +15,68 @@ A full-stack inventory management app for electric vehicles, charging equipment 
 npm run install:all
 ```
 
-### 2. Launch the app
+### 2. Launch the app (development)
 
-Open **two terminal windows** and run one command in each:
+**Option A — single command (recommended)**
+```bash
+npm run dev
+```
+This starts both the backend and frontend concurrently.
 
-**Terminal 1 — Backend**
+**Option B — two separate terminals**
+
+*Terminal 1 — Backend*
 ```bash
 npm run start:backend
 ```
 The API server starts at `http://localhost:3001`.
 
-**Terminal 2 — Frontend**
+*Terminal 2 — Frontend*
 ```bash
 npm run start:frontend
 ```
 The app opens at `http://localhost:5173`.
+
+---
+
+## Deploying to the cloud
+
+### Build for production
+
+```bash
+npm run build
+```
+This compiles the frontend into `frontend/dist/`.
+
+### Run in production mode
+
+```bash
+NODE_ENV=production npm start
+```
+The backend serves the frontend at `http://localhost:3001`.
+
+### Deploy to Railway
+
+1. Push your code to GitHub.
+2. Go to [railway.app](https://railway.app) and create a new project from your GitHub repo.
+3. Set the **root directory** to `/` and the **start command** to:
+   ```
+   npm run build && NODE_ENV=production npm start
+   ```
+4. Railway will detect Node.js automatically and deploy your app.
+
+### Deploy to Render
+
+1. Go to [render.com](https://render.com) and create a new **Web Service** from your GitHub repo.
+2. Set **Build Command** to:
+   ```
+   npm run install:all && npm run build
+   ```
+3. Set **Start Command** to:
+   ```
+   NODE_ENV=production npm start
+   ```
+4. Render will build and deploy your app automatically.
 
 ---
 
